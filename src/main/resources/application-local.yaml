@@ -1,0 +1,24 @@
+couchbase:
+  env:
+    timeouts:
+      connect: 2000
+      query: 75000
+      view: 75000
+      key-value: 20000
+      max-request-lifetime: 10000
+      auto-release-after: 30000
+  bootstrap-hosts: couchbase://localhost
+  bucket:
+    name: content
+    password: password
+server:
+  port: 1000
+  error:
+    include-binding-errors: always
+    include-message: always
+
+logging:
+  level:
+    com.couchbase: INFO
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
